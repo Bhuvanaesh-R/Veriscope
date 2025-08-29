@@ -57,15 +57,31 @@ a {
     color: #fff;
 }
 
+#signin-popup, #pay-popup, #donate-popup {
+    width: clamp(240px, 29.3vw, 1000px);
+    height: clamp(120px, 29.3vh, 250px);
+    background-color: #1e1d1d;
+    border-radius: 15px;
+}
+
+#donation-input {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    outline: none;
+    border: #000;
+}
+
+
+
 .hero-container {
     padding-top: 10rem;
 }
 
 #state, #district {
     background: rgba(0, 0, 0, 0.2);
-    width: var(--btn-sm-wdith);
-    height: 30px;
-    border: none;
+    backdrop-filter: blur(20px);
+    height: 50px;
+    border: #000;
     border-radius: 5px;
     outline: none;
 }

@@ -6,6 +6,10 @@
 
 {% block main %}
 
+    <svg class="d-none me-2" aria-hidden="true" width="64" height="64" id="lock">
+        <use href="#lock" fill="red"></use>
+    </svg>
+
     <div class="d-flex text-center align-items-center justify-content-between pt-4 jersey-10-regular">
         <div>
             <a href="/"><div class="fs-2">Veriscope</div></a>
@@ -49,11 +53,11 @@
     <div class="container d-flex justify-content-center align-items-center text-center mt-4 py-4 jersey-10-regular">
         <div class="position-absolute top-50 start-50 translate-middle">
             <div class="my-4 d-flex justify-content-start align-items-center">
-                <select class="ps-2 d-flex justify-content-center align-items-center me-3" name="state" id="state">
+                <select class="px-2 d-flex justify-content-center align-items-center me-2" name="state" id="state">
                     <option value="" disabled selected>Select State</option>
                     <option value="tamilnadu">TamilNadu</option>
                 </select>
-                <select class="ps-2 d-flex justify-content-center align-items-center" name="district" id="district">
+                <select class="px-2 d-flex justify-content-center align-items-center" name="district" id="district">
                     <option value="" disabled selected>Select district</option>
                     <option value="Ariyalur">Ariyalur</option>
                     <option value="Chengalpattu">Chengalpattu</option>
@@ -98,11 +102,14 @@
             </div>
             <div class="p-2 search-bar d-flex justify-content-between align-items-center mb-4">
                 <textarea class="p-3" placeholder="Type Your Prompt Here" id="prompt-box" ></textarea>
-                <div class="ps-5 d-flex justify-content-start align-items-center">
-                    <svg class="me-2" aria-hidden="true" width="64" height="64">
+                <div class="p-1 d-flex justify-content-start align-items-center">
+                    <svg aria-hidden="true" width="64" height="64">
+                        <use href="#question" fill="white"></use>
+                    </svg>
+                    <svg class="d-none me-2" aria-hidden="true" width="64" height="64">
                         <use href="#check" fill="green"></use>
                     </svg>
-                    <svg class="me-2" aria-hidden="true" width="64" height="64">
+                    <svg class="d-none me-2" aria-hidden="true" width="64" height="64">
                         <use href="#cross" fill="red"></use>
                     </svg>
                 </div>
@@ -113,8 +120,26 @@
         </div>
 
         <!-- Popups -->
-         <div class="d-none" id="signin-popup">
-            
+         <div class="d-none p-4 d-flex justify-content-center align-items-center position-absolute flex-column top-50 start-50 translate-middle z-1000" id="signin-popup">
+            <div>You have reached your daily limit of 2 searches. Sign In using google to get an additional of 3 more searchs</div>
+            <div class="mt-4 d-flex justify-content-center align-items-center">
+                <button class="btn btn-light btn-glow fs-4 d-flex justify-content-center align-items-center me-3">Confirm</button>
+                <button class="btn btn-outline-light fs-4 d-flex justify-content-center align-items-center">Cancel</button>
+            </div>
+         </div>
+         <div class="d-none p-4 d-flex justify-content-center align-items-center position-absolute flex-column top-50 start-50 translate-middle z-1000" id="pay-popup">
+            <div>You have reached your daily limit of 5 searches. Pay ₹10 per search</div>
+            <div class="mt-4 d-flex justify-content-center align-items-center">
+                <button class="btn btn-light btn-glow fs-4 d-flex justify-content-center align-items-center me-3">Confirm</button>
+                <button class="btn btn-outline-light fs-4 d-flex justify-content-center align-items-center">Cancel</button>
+            </div>
+         </div>
+         <div class="d-none p-4 d-flex justify-content-center align-items-center position-absolute flex-column top-50 start-50 translate-middle z-1000" id="donate-popup">
+            <input class="p-2" type="number" placeholder="Donation Amount" id="donation-input">
+            <div class="mt-4 d-flex justify-content-center align-items-center">
+                <button class="btn btn-light btn-glow fs-4 d-flex justify-content-center align-items-center me-3">Confirm</button>
+                <button class="btn btn-outline-light fs-4 d-flex justify-content-center align-items-center">Cancel</button>
+            </div>
          </div>
 
     </div>
