@@ -9,7 +9,7 @@
     --color-decor-grad-bottom-right: linear-gradient(to top left, #00DDFF, transparent);
     --color-decor-grad-bottom-left: linear-gradient(to top right, #f00, transparent);
     --color-decor-grad-top-left: linear-gradient(to bottom right, #f00, transparent);
-    --decor-grad-width-height: 200px;
+    --decor-grad-width-height: 500px;
     --primary-color: #2C2C2C;
     --secondary-color: #4A4A4A;
     --primary-accent-color: #f00;
@@ -37,8 +37,7 @@ p {
 
 
 body {
-    padding-top: 6rem;
-    height: 100vh;
+    min-height: 100vh;
     font-family: "Outfit", serif;
     font-optical-sizing: auto;
     font-weight: 200;
@@ -53,50 +52,116 @@ body {
   color: white;
 }
 
-.bg-image-r {
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.hero-container {
+    padding-top: 10rem;
+}
+
+#state, #district {
+    background: rgba(0, 0, 0, 0.2);
+    width: var(--btn-sm-wdith);
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+#district::-webkit-scrollbar, #state::-webkit-scrollbar {
+    width: 8px;
+    background: #000;
+}
+
+#district::-webkit-scrollbar-thumb, #state::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #2f2a2a;
+}
+
+#district::-webkit-scrollbar-thumb:hover, #state::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: #ecdddd;
+}
+
+
+#district::-webkit-scrollbar-track, #state::-webkit-scrollbar-track {
+    background: #000;
+}
+
+#district option, #state option {
+    background-color: #000;
+    border: none;
+    outline: none;
+}
+
+.search-bar {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    width: 80vw;
+    max-height: 120px;
+    height: auto;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+#prompt-box {
+    width: 100%;
+    max-height: 100px;
+    background: none;
+    border: none;
+    outline: none;
+    overflow-x: auto;
+    box-sizing: border-box;
+    line-height: 1.5;
+    resize: none;
+}
+
+#prompt-box::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+#prompt-box::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #2f2a2a;
+}
+
+#prompt-box::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: #ecdddd;
+}
+
+
+#prompt-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#prompt-box:active {
+    border: none;
+    text-decoration: none;
+}
+
+.bg-image-l, .bg-image-r {
     z-index: -1;
+    object-fit: cover;
     position: absolute;
-    right: 0;
     opacity: 40%;
-    height: 750px;
-    width: 750px;
+    height: var(--decor-grad-width-height);
+    width: var(--decor-grad-width-height);
+    user-select: none;
+    pointer-events: none;
+}
+
+.bg-image-r {
+    top: 25%;
+    right: 0;
 }
 
 .bg-image-l {
-    z-index: -1;
-    position: absolute;
+    top: 25%;
     left: 0;
-    opacity: 40%;
-    height: 750px;
-    width: 750px;
-}
-
-.bg-image-tr {
-    position: absolute;
-    top: 0;
-    right: 0;
-    opacity: 60%;
-}
-
-.bg-image-tl {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 60%;
-}
-
-.bg-image-br {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    opacity: 60%;
-}
-
-.bg-image-bl {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    opacity: 60%;
 }
 
 /* Background Decorative Gradients */
@@ -155,6 +220,17 @@ body {
 /* Responsive Design */
 
 @media (max-width: 400px) {
+
+    .hero-container {
+        padding-top: 2rem;
+    }
+
+    .bg-image-l, .bg-image-r {
+        width: 80vw;
+        height: 60vh;
+    }
+
+
     .blurred-circle-red-top {
         width: 80vw;
         height: 60vh;

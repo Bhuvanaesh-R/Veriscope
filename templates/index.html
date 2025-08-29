@@ -9,12 +9,12 @@
     <!-- Background Blurred Circles -->
 
     <!-- Main Content -->
-    <div class="container d-flex justify-content-center align-items-center flex-column text-center py-4 jersey-10-regular">
-        <h1 class="display-1 title-hero">
+    <div class="container hero-container d-flex justify-content-center align-items-center flex-column text-center jersey-10-regular">
+        <h1 class="display-1 title-hero mt-4 pt-4">
             Veriscope — The Fake News Checker For You!
         </h1>
         <p class="fs-4 my-4 subtitle">Veriscope is an intelligent fact-checking assistant designed to cut through misinformation and deliver trustworthy insights in seconds. Simply paste an article, claim, or statement, and our AI analyzes credibility, highlights questionable details, and provides a clear reliability score. Built for students, researchers, and everyday readers, Veriscope helps you stay informed with confidence</p>
-        <div class="d-flex">
+        <div class="d-flex mb-4 pb-4">
             {% if not session['user'] %}
                 <form action="/login" method="post">
                     <button class="btn btn-light btn-glow custom-btn-lg fs-4 mt-4 me-4">Sign In</button>

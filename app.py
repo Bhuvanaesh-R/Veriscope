@@ -49,6 +49,13 @@ def login():
         f"&redirect_uri={REDIRECT_URI}&scope=openid email profile"
     )
     return redirect(google_auth_url)
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+
+    return redirect("/")
     
 
 @app.route("/search")

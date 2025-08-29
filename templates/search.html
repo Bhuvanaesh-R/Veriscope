@@ -5,45 +5,118 @@
 {% endblock %}
 
 {% block main %}
+
+    <div class="d-flex text-center align-items-center justify-content-between pt-4 jersey-10-regular">
+        <div>
+            <a href="/"><div class="fs-2">Veriscope</div></a>
+        </div>
+        <div>
+            {% if not session['user'] %}
+            <form action="/login" method="post">
+                <button class="btn btn-light btn-glow fs-2">Sign In</button>
+                <div id="g_id_onload"
+                    data-client_id="267324263130-0n28oik3c3ptbsegbko7vmup92rfj1uc.apps.googleusercontent.com.apps.googleusercontent.com"
+                    data-callback="handleCredentialResponse">
+                </div>
+
+                <div class="g_id_signin" 
+                    data-type="standard">
+                </div>
+            </form>
+            {% else %}
+                <div class="pfp-div dropdown bd-mode-toggle">
+                    <img class="pfp dropdown-toggle" src="{{ session['user']['picture'] }}" alt="user-profile-picture" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item d-flex align-items-center justify-content-left">@{{ session['user']['name'] }}</li>
+                        <a href="/donation"><li class="dropdown-item d-flex align-items-center justify-content-left active">Donate To Us</li></a>
+                        <li>
+                            <form action="/logout" method="get">
+                                <button class="dropdown-item d-flex align-items-center justify-content-between" data-bs-theme-value="auto" aria-pressed="true">
+                                    Logout
+                                    <svg class="bi me-2 opacity-50" aria-hidden="true">
+                                        <use href="#logout"></use>
+                                    </svg>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <div class="container d-flex justify-content-center align-items-center flex-column text-center py-4 jersey-10-regular">
-        <div class="d-flex justify-content-between">
-            <div>
-                <div>Veriscope</div>
+    <div class="container d-flex justify-content-center align-items-center text-center mt-4 py-4 jersey-10-regular">
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <div class="my-4 d-flex justify-content-start align-items-center">
+                <select class="ps-2 d-flex justify-content-center align-items-center me-3" name="state" id="state">
+                    <option value="" disabled selected>Select State</option>
+                    <option value="tamilnadu">TamilNadu</option>
+                </select>
+                <select class="ps-2 d-flex justify-content-center align-items-center" name="district" id="district">
+                    <option value="" disabled selected>Select district</option>
+                    <option value="Ariyalur">Ariyalur</option>
+                    <option value="Chengalpattu">Chengalpattu</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Cuddalore">Cuddalore</option>
+                    <option value="Dharmapuri">Dharmapuri</option>
+                    <option value="Dindigul">Dindigul</option>
+                    <option value="Erode">Erode</option>
+                    <option value="Kallakurichi">Kallakurichi</option>
+                    <option value="Kanchipuram">Kanchipuram</option>
+                    <option value="Kanyakumari">Kanyakumari</option>
+                    <option value="Karur">Karur</option>
+                    <option value="Krishnagiri">Krishnagiri</option>
+                    <option value="Madurai">Madurai</option>
+                    <option value="Mayiladuthurai">Mayiladuthurai</option>
+                    <option value="Nagapattinam">Nagapattinam</option>
+                    <option value="Namakkal">Namakkal</option>
+                    <option value="The Nilgiris">The Nilgiris</option>
+                    <option value="Perambalur">Perambalur</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Ramanathapuram">Ramanathapuram</option>
+                    <option value="Ranipet">Ranipet</option>
+                    <option value="Salem">Salem</option>
+                    <option value="Sivaganga">Sivaganga</option>
+                    <option value="Tenkasi">Tenkasi</option>
+                    <option value="Thanjavur">Thanjavur</option>
+                    <option value="Theni">Theni</option>
+                    <option value="Thoothukudi">Thoothukudi</option>
+                    <option value="Tiruchirappalli">Tiruchirappalli</option>
+                    <option value="Tirunelveli">Tirunelveli</option>
+                    <option value="Tirupathur">Tirupathur</option>
+                    <option value="Tiruppur">Tiruppur</option>
+                    <option value="Tiruvallur">Tiruvallur</option>
+                    <option value="Tiruvannamalai">Tiruvannamalai</option>
+                    <option value="Tiruvarur">Tiruvarur</option>
+                    <option value="Vellore">Vellore</option>
+                    <option value="Viluppuram">Viluppuram</option>
+                    <option value="Virudhunagar">Virudhunagar</option>
+
+                </select>
+            </div>
+            <div class="p-2 search-bar d-flex justify-content-between align-items-center mb-4">
+                <textarea class="p-3" placeholder="Type Your Prompt Here" id="prompt-box" ></textarea>
+                <div class="ps-5 d-flex justify-content-start align-items-center">
+                    <svg class="me-2" aria-hidden="true" width="64" height="64">
+                        <use href="#check" fill="green"></use>
+                    </svg>
+                    <svg class="me-2" aria-hidden="true" width="64" height="64">
+                        <use href="#cross" fill="red"></use>
+                    </svg>
+                </div>
             </div>
             <div>
-                {% if not session['user'] %}
-                <form action="/login" method="post">
-                    <button class="btn btn-light btn-glow custom-btn-lg fs-4 mt-4 me-4">Sign In</button>
-                    <div id="g_id_onload"
-                        data-client_id="267324263130-0n28oik3c3ptbsegbko7vmup92rfj1uc.apps.googleusercontent.com.apps.googleusercontent.com"
-                        data-callback="handleCredentialResponse">
-                    </div>
-
-                    <div class="g_id_signin" 
-                        data-type="standard">
-                    </div>
-                </form>
-                {% else %}
-                    <div class="pfp-div dropdown bd-mode-toggle">
-                            <img class="pfp dropdown-toggle" src="{{ session['user']['picture'] }}" alt="user-profile-picture" data-bs-toggle="dropdown" aria-expanded="false">
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item d-flex align-items-center justify-content-left">@{{ session['username'] }}</li>
-                                <li>
-                                    <form action="/logout" method="get">
-                                        <button class="dropdown-item d-flex align-items-center justify-content-between active" data-bs-theme-value="auto" aria-pressed="true">
-                                            Logout
-                                            <svg class="bi me-2 opacity-50" aria-hidden="true">
-                                                <use href="#logout"></use>
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                {% endif %}
+                <div class="btn btn-light custom-btn-lg btn-glow fs-4 d-flex justify-content-center align-items-center">Confirm</div>
             </div>
         </div>
+
+        <!-- Popups -->
+         <div class="d-none" id="signin-popup">
+            
+         </div>
+
     </div>
     
 {% endblock %}
