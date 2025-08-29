@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+   
+    <!-- Background Blurred Circles -->
+
+    <!-- Main Content -->
+    <div class="container d-flex justify-content-center align-items-center flex-column text-center py-4 jersey-10-regular">
+        <h1 class="display-1 title-hero">
+            Veriscope — The Fake News Checker For You!
+        </h1>
+        <p class="fs-4 my-4 subtitle">Veriscope is an intelligent fact-checking assistant designed to cut through misinformation and deliver trustworthy insights in seconds. Simply paste an article, claim, or statement, and our AI analyzes credibility, highlights questionable details, and provides a clear reliability score. Built for students, researchers, and everyday readers, Veriscope helps you stay informed with confidence</p>
+        <div class="d-flex">
+            {% if not session['user'] %}
+                <form action="/login" method="post">
+                    <button class="btn btn-light btn-glow custom-btn-lg fs-4 mt-4 me-4">Sign In</button>
+                    <div id="g_id_onload"
+                        data-client_id="267324263130-0n28oik3c3ptbsegbko7vmup92rfj1uc.apps.googleusercontent.com.apps.googleusercontent.com"
+                        data-callback="handleCredentialResponse">
+                    </div>
+
+                    <div class="g_id_signin" 
+                        data-type="standard">
+                    </div>
+                </form>
+            {% endif %}
+            <a href="/search">
+                <button class="btn btn-outline-light custom-btn-lg fs-4 mt-4">Try it out</button>
+            </a>
+        </div>
+
+    </div>
+    
+{% endblock %}

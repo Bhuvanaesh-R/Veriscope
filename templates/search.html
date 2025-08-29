@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <!-- Main Content -->
+    <div class="container d-flex justify-content-center align-items-center flex-column text-center py-4 jersey-10-regular">
+        <div class="d-flex justify-content-between">
+            <div>
+                <div>Veriscope</div>
+            </div>
+            <div>
+                {% if not session['user'] %}
+                <form action="/login" method="post">
+                    <button class="btn btn-light btn-glow custom-btn-lg fs-4 mt-4 me-4">Sign In</button>
+                    <div id="g_id_onload"
+                        data-client_id="267324263130-0n28oik3c3ptbsegbko7vmup92rfj1uc.apps.googleusercontent.com.apps.googleusercontent.com"
+                        data-callback="handleCredentialResponse">
+                    </div>
+
+                    <div class="g_id_signin" 
+                        data-type="standard">
+                    </div>
+                </form>
+                {% else %}
+                    <div class="pfp-div dropdown bd-mode-toggle">
+                            <img class="pfp dropdown-toggle" src="{{ session['user']['picture'] }}" alt="user-profile-picture" data-bs-toggle="dropdown" aria-expanded="false">
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item d-flex align-items-center justify-content-left">@{{ session['username'] }}</li>
+                                <li>
+                                    <form action="/logout" method="get">
+                                        <button class="dropdown-item d-flex align-items-center justify-content-between active" data-bs-theme-value="auto" aria-pressed="true">
+                                            Logout
+                                            <svg class="bi me-2 opacity-50" aria-hidden="true">
+                                                <use href="#logout"></use>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

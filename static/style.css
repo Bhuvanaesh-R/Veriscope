@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
+:root {
+    --btn-sm-wdith: clamp(75px, 8.9vw, 200px);
+    --btn-lg-width: clamp(100px, 23.2vw, 400px);
+    --btn-xl-width: clamp(120px, 29.3vw, 500px);
+    --btn-xl-height: clamp(60px, 10.8vh, 250px);
+    --color-primary-button: linear-gradient(to bottom right, #f00, #0df);
+    --color-decor-grad-bottom-right: linear-gradient(to top left, #00DDFF, transparent);
+    --color-decor-grad-bottom-left: linear-gradient(to top right, #f00, transparent);
+    --color-decor-grad-top-left: linear-gradient(to bottom right, #f00, transparent);
+    --decor-grad-width-height: 200px;
+    --primary-color: #2C2C2C;
+    --secondary-color: #4A4A4A;
+    --primary-accent-color: #f00;
+    --secondary-accent-color: #0df;
+    --color-page-bg: #202C59;
+    --color-text: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.jersey-10-regular {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body {
+    padding-top: 6rem;
+    height: 100vh;
+    font-family: "Outfit", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    background: radial-gradient(
+      circle at top center,
+      rgba(93, 14, 157, 0.7) 0%,
+      rgba(93, 14, 157, 0.4) 30%,
+      #1e1d1d 60%,
+      #1e1d1d 100%
+    );
+  color: white;
+}
+
+.bg-image-r {
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    opacity: 40%;
+    height: 750px;
+    width: 750px;
+}
+
+.bg-image-l {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    opacity: 40%;
+    height: 750px;
+    width: 750px;
+}
+
+.bg-image-tr {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 60%;
+}
+
+.bg-image-tl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 60%;
+}
+
+.bg-image-br {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 60%;
+}
+
+.bg-image-bl {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 60%;
+}
+
+/* Background Decorative Gradients */
+.decor-grad-top-left, 
+.decor-grad-bottom-left, 
+.decor-grad-bottom-right {
+    width: var(--decor-grad-width-height);
+    height: var(--decor-grad-width-height);
+    position: absolute;
+    filter: blur(125px);
+    z-index: 5;
+}
+
+.decor-grad-top-left {
+    background: var(--color-decor-grad-top-left);
+    border-bottom-right-radius: 50%;
+    top: 0;
+    left: 0;
+}
+
+.decor-grad-bottom-left {
+    background: var(--color-decor-grad-bottom-left);
+    border-top-right-radius: 50%;
+    bottom: 0;
+    left: 0;
+}
+
+.decor-grad-bottom-right {
+    background: var(--color-decor-grad-bottom-right);
+    border-top-left-radius: 50%;
+    bottom: 0;
+    right: 0;
+}
+
+/* Buttons */
+.btn-glow {
+    box-shadow: 0 0 20px var(--bs-body-color);
+}
+
+
+/* Button Size */
+.custom-btn-lg {
+    height: 60px;
+    width: var(--btn-lg-width);
+}
+
+/* Text Styles */
+.title-hero {
+    width: 80vw;
+}
+
+.subtitle {
+    width: 60vw;
+}
+
+/* Responsive Design */
+
+@media (max-width: 400px) {
+    .blurred-circle-red-top {
+        width: 80vw;
+        height: 60vh;
+        filter: blur(20vw);
+    }
+
+    .blurred-circle-red-bottom {
+        width: 80vw;
+        height: 60vh;
+        filter: blur(20vw);
+    }
+
+    .blurred-circle-cyan {
+        width: 80vw;
+        height: 60vh;
+        filter: blur(20vw);
+    }
+}
+
+/* Nav Bar */
+
+.navbar {
+    max-width: 60%;
+    z-index: 1;
+    background: linear-gradient(135deg, var(--bs-body-color), var(--bs-body-colorg)),
+    linear-gradient(to top left, var(--bs-body-color), transparent);
+    background-blend-mode: overlay;
+    border: 2px solid var(--bs-body-color);
+    border-radius: 30px;
+    margin: 2rem auto 4rem auto;
+    padding: 0.3rem;
+    box-shadow: 0 0 20px var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+}
+
+
+/* pictures */
+.pfp {
+    color: var(--bs-body-color);
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    border: 2px solid;
+    border-radius: 30px;
+}
+
+.guild-icon {
+    width: 128px;
+    height: auto;
+    border-radius: 25px;
+}
+
+.apology-pic {
+    border-radius: 25px;
+    margin: 2rem auto;
+    width: 70%;
+    height: auto;
+}
+
+.bi {
+  vertical-align: -0.125em;
+  fill: currentColor;
+  width: 1rem;
+  height: 1rem;
+}
+
+#logout {
+    fill: red;
+    width: 1rem;
+    height: 1rem;
+}
+
+#logout:hover {
+    opacity: 1;
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+.bd-mode-toggle .bi {
+  width: 1em;
+  height: 1em;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+
+
+/* server-list */
+.server-list {
+    gap: 1rem;
+}
+
+.card {
+    padding: 1rem;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* manage */
+
+.module {
+    border: 1px solid var(--bs-body-color);
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.module-expanded {
+    width: 100%;
+    padding: 2rem;
+}
+
+#category-list, #channel-list, #permission-list {
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    width: 100%;
+    border: 1px solid var(--bs-body-color);
+    border-radius: 25px;
+}
+
+.categories, .channels, .permissions {
+    margin: 0.25rem;
+}
+
+#noofcategorytobeadded, #categoryname, #noofchannel, #channelname, #channel-type {
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--bs-body-color);
+    color: var(--bs-body-color);
+    border-radius: 5px;
+    padding: 0.2rem;
+}
+
+.warning-popover {
+  --bs-popover-max-width: 200px;
+  --bs-popover-border-color: #f00;
+  --bs-popover-header-bg: #f00;
+  --bs-popover-header-color: var(--bs-white);
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: .5rem;
+}
