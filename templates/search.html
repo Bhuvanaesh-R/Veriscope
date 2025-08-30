@@ -12,7 +12,7 @@
 
     <div class="d-flex text-center align-items-center justify-content-between pt-4 jersey-10-regular">
         <div>
-            <a href="/"><div class="fs-2">Veriscope</div></a>
+            <a href="/"><div class="display-3">Veriscope</div></a>
         </div>
         <div>
             {% if not session['user'] %}
@@ -103,19 +103,19 @@
             <div class="p-2 search-bar d-flex justify-content-between align-items-center mb-4">
                 <textarea class="p-3" placeholder="Type Your Prompt Here" id="prompt-box" ></textarea>
                 <div class="p-1 d-flex justify-content-start align-items-center">
-                    <svg aria-hidden="true" width="64" height="64">
+                    <svg class="d" aria-hidden="true" width="64" height="64" id="icon-question">
                         <use href="#question" fill="white"></use>
                     </svg>
-                    <svg class="d-none me-2" aria-hidden="true" width="64" height="64">
+                    <svg class="d-none d" aria-hidden="true" width="64" height="64" id="icon-check">
                         <use href="#check" fill="green"></use>
                     </svg>
-                    <svg class="d-none me-2" aria-hidden="true" width="64" height="64">
+                    <svg class="d-none d" aria-hidden="true" width="64" height="64" id="icon-cross">
                         <use href="#cross" fill="red"></use>
                     </svg>
                 </div>
             </div>
             <div>
-                <div class="btn btn-light custom-btn-lg btn-glow fs-4 d-flex justify-content-center align-items-center">Confirm</div>
+                <div class="btn btn-light custom-btn-lg btn-glow fs-4 d-flex justify-content-center align-items-center" id="prompt-checker">Confirm</div>
             </div>
         </div>
 
@@ -143,5 +143,5 @@
          </div>
 
     </div>
-    
+
 {% endblock %}

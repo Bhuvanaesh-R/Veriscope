@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from helpers import apology, login_required
 from google.oauth2 import id_token
 from google.auth.transport import requests as grequests
+from cs50 import SQL
 
 
 load_dotenv()
@@ -14,9 +15,13 @@ GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
 REDIRECT_URI = os.getenv('REDIRECT_URI')
 
-connection = sqlite3.connect("gencord.db")
+connection = sqlite3.connect("veriscope.db")
 cursor = connection.cursor()
 
+db = SQL("sqlite:///veriscope.db")
+# print(db.execute('CREATE TABLE search_log (id integer PRIMARY KEY, user_email VARCHAR(255), searched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, prompt VARCHAR(4000), result VARCHAR(5))'))
+print(db.execute('ALTER TABLE searched_log MODIFY id INT AUTO_INCREMENT PRIMARY KEY'))
+#print(db.execute('INSERT INTO searched_log VALUE()'))
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -60,7 +65,19 @@ def logout():
 
 @app.route("/search")
 def servers():
+    r = db.execute('SELECT COUNT(*) FROM searched_log WHERE user_email = ? AND DATE(searched_at) = DATE(CURRENT_TIMESTAMP)', session['user']['email'])
     return render_template("search.html")
+
+@app.route("/get_session")
+def get_session():
+
+    user = request.args.get("s")
+    if user == '0':
+        print(session.get('user'))
+        return session.get('user')
+
+    return False
+
 
 
 @app.route("/callback")
@@ -89,8 +106,8 @@ def callback():
             "picture": idinfo["picture"]
         }
     except ValueError:
-        return "Invalid token", 400
-    
+        return apology("Invalid token", 400) 
+
     return redirect("/search")
 
 
